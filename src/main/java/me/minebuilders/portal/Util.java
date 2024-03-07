@@ -69,4 +69,17 @@ public class Util {
         }
         return message;
     }
+
+    // Begin of code section modified or developed by _JuL1En_
+
+    public static Material getPortalMaterial() {
+
+        try {
+            return Material.valueOf("NETHER_PORTAL");
+
+        } catch (IllegalArgumentException e) {
+            return Material.valueOf("PORTAL");
+        }
+    }
+    // End of code section modified or developed by _JuL1En_
 }
