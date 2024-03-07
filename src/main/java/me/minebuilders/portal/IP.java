@@ -5,8 +5,10 @@ import me.minebuilders.portal.listeners.PortalListener;
 import me.minebuilders.portal.listeners.WandListener;
 import me.minebuilders.portal.portals.Portal;
 import me.minebuilders.portal.storage.Data;
+import me.minebuilders.portal.tab.PortalTab;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,6 +33,7 @@ public final class IP extends JavaPlugin {
         data = new Data(this);
         Bukkit.getMessenger().registerOutgoingPluginChannel((Plugin)this, "BungeeCord");
         getCommand("iportal").setExecutor((CommandExecutor)new CommandListener());
+        getCommand("iportal").setTabCompleter((TabCompleter) new PortalTab(this));
         getServer().getPluginManager().registerEvents((Listener)new WandListener(this), (Plugin)this);
         getServer().getPluginManager().registerEvents((Listener)new PortalListener(this), (Plugin)this);
         Util.log("IPortal has been enabled!");
