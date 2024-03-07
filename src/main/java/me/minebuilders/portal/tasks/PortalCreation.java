@@ -80,7 +80,7 @@ public class PortalCreation implements Runnable, Listener  {
                 }
 
             } catch (Exception e) {
-                e.printStackTrace();
+                Bukkit.getConsoleSender();
             }
 
             // End of code section modified or developed by _JuL1En_
