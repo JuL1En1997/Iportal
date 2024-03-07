@@ -4,7 +4,6 @@ import me.minebuilders.portal.IP;
 import me.minebuilders.portal.Util;
 import me.minebuilders.portal.portals.Portal;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 
 public class DeleteCmd extends BaseCmd {
@@ -26,7 +25,15 @@ public class DeleteCmd extends BaseCmd {
                 por = p;
                 Util.msg((CommandSender) player, "&aAttempting to remove " + name + "!");
 
-                for (Location l : p.getBound().getBlocks(Material.NETHER_PORTAL)) {
+                // Change implemented by _JuL1En_ for improved compatibility across Minecraft versions
+                // Old Code:
+                // for (Location l : p.getBound().getBlocks(Material.NETHER_PORTAL)) {
+                //     l.getBlock().breakNaturally();
+                // }
+
+                // New Code:
+
+                for (Location l : p.getBound().getBlocks(Util.getPortalMaterial())) {
                     l.getBlock().breakNaturally();
                 }
 
