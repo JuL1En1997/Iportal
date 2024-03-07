@@ -71,8 +71,8 @@ public class PortalCreation implements Runnable, Listener  {
                     Method setAxisMethod = orientableClass.getMethod("setAxis", Class.forName("org.bukkit.Axis"));
 
                     // Determine the axis orientation based on the 'movesZ' variable and set the appropriate axis
-                    Object axisZ = Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Axis"), movesZ ? "Z" : "X");
-                    setAxisMethod.invoke(blockData, axisZ);
+                    Object axisvalue = Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Axis"), movesZ ? "Z" : "X");
+                    setAxisMethod.invoke(blockData, axisvalue);
 
                     // Update the BlockData of the block with the new orientation
                     Method setBlockDataMethod = Block.class.getMethod("setBlockData", Class.forName("org.bukkit.block.data.BlockData"));
