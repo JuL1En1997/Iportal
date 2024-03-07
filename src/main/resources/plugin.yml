@@ -1,0 +1,9 @@
+name: Iportal
+authors: [Spoopy, bob7l]
+version: '${project.version}'
+main: me.minebuilders.portal.IP
+api-version: '1.20'
+softdepend: [Multiverse-Core, MultiWorld]
+commands:
+  iportal:
+    description: IPortal's base command
