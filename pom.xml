@@ -6,7 +6,7 @@
 
   <groupId>me.minebuilders</groupId>
   <artifactId>Iportal</artifactId>
-  <version>1.13</version>
+  <version>2.0</version>
   <packaging>jar</packaging>
 
   <name>Iportal</name>
