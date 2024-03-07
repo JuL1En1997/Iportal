@@ -1,5 +1,6 @@
 package me.minebuilders.portal.tasks;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,8 @@ public class PortalCreation implements Runnable, Listener  {
                 }
 
             } catch (Exception e) {
-                Bukkit.getConsoleSender();
+
+                new PortalCreationLegacy(b).run();
             }
 
             // End of code section modified or developed by _JuL1En_
