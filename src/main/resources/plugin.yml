@@ -1,9 +1,33 @@
 name: Iportal
-authors: [Spoopy, bob7l]
+authors: [Spoopy, bob7l, _JuL1En_]
 version: '${project.version}'
 main: me.minebuilders.portal.IP
-api-version: '1.20'
+api-version: '1.13'
 softdepend: [Multiverse-Core, MultiWorld]
 commands:
   iportal:
     description: IPortal's base command
+
+permissions:
+  iportal.create:
+    description: Creates portal in defined section
+
+  iportal.setto:
+    description: Sets the portals targets
+
+  iportal.delete:
+    description: Delete a portal
+
+  iportal.toggle:
+    description: Toggle a portals use
+
+  iportal.refresh:
+    description: Resets portals frame
+
+  iportal.list:
+    description: Lists all portals
+
+  iportal.wand:
+    description: Toggles blazerod-wand
+
+
