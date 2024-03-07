@@ -60,7 +60,7 @@ public class PortalCreation implements Runnable, Listener  {
 
                 j.getBlock().setType(Material.NETHER_PORTAL);
                 final Orientable or = (Orientable)j.getBlock().getBlockData();
-                or.setAxis(Axis.Z);
+                or.setAxis(Axis.X);
                 j.getBlock().setBlockData((BlockData)or);
             }
         }
