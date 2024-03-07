@@ -40,7 +40,13 @@ public class PortalListener implements Listener {
     @EventHandler
     public void onTeleport(PlayerPortalEvent event) {
         Player p = event.getPlayer();
-        Vector l = getNearLoc(Material.NETHER_PORTAL, p.getLocation()).toVector();
+
+        // Change implemented by _JuL1En_ for improved compatibility across Minecraft versions
+        // Old Code:
+        // Vector l = getNearLoc(Material.NETHER_PORTAL, p.getLocation()).toVector();
+
+        // New Code:
+        Vector l = getNearLoc(Util.getPortalMaterial(), p.getLocation()).toVector();
 
         for (Portal portal : plugin.portals) {
             if (portal.isInRegion(l))
@@ -56,7 +62,13 @@ public class PortalListener implements Listener {
         if (e instanceof Player) {
 
             Player p = (Player)e;
-            Vector l = getNearLoc(Material.NETHER_PORTAL, p.getLocation()).toVector();
+
+            // Change implemented by _JuL1En_ for improved compatibility across Minecraft versions
+            // Old Code:
+            // Vector l = getNearLoc(Material.valueOf("NETHER_PORTAL"), p.getLocation()).toVector();
+
+            // New Code:
+            Vector l = getNearLoc(Util.getPortalMaterial(), p.getLocation()).toVector();
 
             for (Portal portal : this.plugin.portals) {
 
@@ -110,7 +122,14 @@ public class PortalListener implements Listener {
         BlockFace[] arrayOfBlockFace;
         for (i = (arrayOfBlockFace = faces).length, b1 = 0; b1 < i; ) {
             BlockFace face = arrayOfBlockFace[b1];
-            if (b.getRelative(face).getType().equals(Material.NETHER_PORTAL))
+
+            // Change implemented by _JuL1En_ for improved compatibility across Minecraft versions
+            // Old Code:
+            // if (b.getRelative(face).getType().equals(Material.NETHER_PORTAL))
+
+            // New Code:
+            if (b.getRelative(face).getType().equals(Util.getPortalMaterial()))
+
                 p.teleport(getNearLoc(Material.AIR, b.getLocation()));
             b1++;
         }
