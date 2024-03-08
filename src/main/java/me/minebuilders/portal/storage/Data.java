@@ -14,8 +14,10 @@ import me.minebuilders.portal.portals.PortalType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 public class Data {
     private File file = null;
@@ -158,12 +160,106 @@ public class Data {
         return PortalType.DEFAULT;
     }
 
-    public List<String> getPortalNames() {
+    // Begin of code section modified or developed by _JuL1En_
 
-        if (this.config.isConfigurationSection("portals")) {
-            return new ArrayList<>(this.config.getConfigurationSection("portals").getKeys(false));
+    /**
+     * Retrieves the names of portals based on a specific PortalType.
+     * If the passed type is `null`, the names of all portals are returned.
+     * This method provides a type-safe way to query portal names,
+     * preventing the use of invalid types.
+     *
+     * @param type The PortalType for which to query the portal names.
+     *             Can be `null` to get the names of all portals.
+     * @return A list of portal names that match the specified type.
+     *         An empty list is returned if no matching portals are found or
+     *         if the 'portals' configuration section does not exist.
+     */
+
+    public List<String> getPortalNamesByType(PortalType type) {
+        List<String> portals = new ArrayList<>();
+
+        // Checks if the 'portals' configuration section exists
+        if (!this.config.isConfigurationSection("portals")) {
+
+            return portals; // Returns an empty list if no portals are configured
         }
 
-        return new ArrayList<>(); // Leere Liste, falls keine Portale vorhanden sind
+        // If type is `null`, this corresponds to a request for the names of all portals
+        if (type == null) {
+
+            // Adds all keys (portal names) from the 'portals' section to the list
+            portals.addAll(this.config.getConfigurationSection("portals").getKeys(false));
+
+            return portals;
+        }
+
+        // Iterates over all defined portals, adding only the names of portals
+        // that match the specified PortalType
+        for (String key : this.config.getConfigurationSection("portals").getKeys(false)) {
+            String configType = this.config.getString("portals." + key + ".type");
+            if (type.name().equalsIgnoreCase(configType)) {
+                portals.add(key);
+            }
+        }
+
+        return portals; // Returns the list of portal names
     }
+
+
+
+    /**
+     * Retrieves the name of a sound that matches the given argument.
+     * This method iterates through all available sounds and returns the name
+     * of the sound that matches the given argument, ignoring case sensitivity.
+     *
+     * @param arg The name of the sound to look for.
+     * @return The name of the matching sound, or `null` if no match is found.
+     */
+
+    public String getSound(String arg) {
+
+        // Iterate through all available sounds
+        for(Sound sound : Sound.values()) {
+            // Check if the sound's name matches the given argument (case-insensitive)
+            if(sound.name().equalsIgnoreCase(arg)) {
+                return sound.name(); // Return the matching sound name
+            }
+        }
+
+        return null; // Return null if no matching sound is found
+    }
+
+
+    /**
+     * Plays a sound for a player based on the sound name associated with a portal.
+     * This method retrieves the sound name from the portal configuration, validates it,
+     * and then plays the sound at the player's location if it is valid and not set to "NONE".
+     *
+     * @param p The player for whom to play the sound.
+     * @param portal The portal from which to retrieve the sound name.
+     */
+
+    public void playSound(Player p, Portal portal) {
+
+        // Retrieve the sound name for the given portal from the configuration
+        // Convert to uppercase and replace dots with underscores to match the enum naming convention
+        String soundName = IP.data.getConfig().getString("portals." + portal.getName() + ".sound").toUpperCase().replace(".", "_");
+
+        // Check if the sound name is valid (not null, not "NONE", and not empty)
+        if(soundName != null && !soundName.equalsIgnoreCase("NONE") && !soundName.isEmpty()) {
+            try {
+                // Attempt to get the Sound enum value from the sound name
+                Sound sound = Sound.valueOf(soundName);
+                // Play the sound at the player's location with volume and pitch set to 1.0
+                p.playSound(p.getLocation(), sound, 1.0F, 1.0F);
+
+            } catch (IllegalArgumentException e) {
+                // Catch the exception if the sound name is invalid (not in the Sound enum)
+                // No action is taken if the sound name is invalid
+            }
+        }
+    }
+
+    // End of code section modified or developed by _JuL1En_
+
 }
