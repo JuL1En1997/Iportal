@@ -82,6 +82,8 @@ public class PortalListener implements Listener {
                         Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin)this.plugin, new Runnable() {
                             public void run() {
 
+                                portal.Teleport(p);
+
                                 // Added by _JuL1En_ to enable functionality
                                 // for playing a specific sound when teleporting through the portal.
                                 IP.data.playSound(p, portal);
