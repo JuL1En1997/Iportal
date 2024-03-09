@@ -72,12 +72,23 @@ public class Util {
 
     // Begin of code section modified or developed by _JuL1En_
 
-    public static Material getPortalMaterial() {
+    /**
+     * Retrieves the appropriate Material enum for portal blocks, ensuring compatibility across different Minecraft versions.
+     * This method primarily attempts to return the material for a Nether portal block, accommodating newer game versions.
+     * If the NETHER_PORTAL material is not recognized (indicating an older game version), it defaults to the PORTAL material.
+     *
+     * @return Material for the portal block applicable to the current Minecraft version.
+     */
 
+    public static Material getPortalMaterial() {
+        // This method attempts to return the Material enum value for a Nether portal block.
+        // It tries to return the NETHER_PORTAL material, which is used in newer versions of Minecraft.
         try {
             return Material.valueOf("NETHER_PORTAL");
 
         } catch (IllegalArgumentException e) {
+            // If NETHER_PORTAL is not found (likely in older Minecraft versions),
+            // it falls back to returning the PORTAL material, which was used in earlier versions.
             return Material.valueOf("PORTAL");
         }
     }
