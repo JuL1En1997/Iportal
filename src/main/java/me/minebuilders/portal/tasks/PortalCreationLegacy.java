@@ -70,7 +70,20 @@ public class PortalCreationLegacy implements Runnable, Listener {
 
     @EventHandler
     public void onPortalBreak(BlockPhysicsEvent event) {
-        if (event.getBlock().getType() == Util.getPortalMaterial() && this.b.isInRegion(event.getBlock().getLocation().toVector()))
-            event.setCancelled(true);
+
+        // Change implemented by _JuL1En_ for reducing laggs
+        // Old Code:
+        // if (event.getBlock().getType() == Util.getPortalMaterial() && this.b.isInRegion(event.getBlock().getLocation().toVector()))
+        //     event.setCancelled(true);
+        // }
+
+        // New Code:
+        if (!this.b.isInRegion(event.getBlock().getLocation().toVector())) {
+            return;
+        }
+            if(event.getBlock().getType() == Util.getPortalMaterial()) {
+                event.setCancelled(true);
+            }
+
     }
 }
