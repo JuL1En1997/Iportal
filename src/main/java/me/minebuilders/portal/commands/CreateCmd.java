@@ -20,6 +20,12 @@ public class CreateCmd extends BaseCmd {
     public CreateCmd() {
         this.forcePlayer = true;
         this.cmdName = "create";
+
+        // Change implemented by _JuL1En_ for improved functionality
+        // Old Code:
+        // this.argLength = 3;
+
+        // New Code:
         this.argLength = 4;
 
         // Change implemented by _JuL1En_ for improved functionality
