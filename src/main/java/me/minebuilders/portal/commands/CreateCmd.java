@@ -8,6 +8,7 @@ import me.minebuilders.portal.Util;
 import me.minebuilders.portal.portals.Portal;
 import me.minebuilders.portal.portals.PortalType;
 import me.minebuilders.portal.tasks.PortalCreation;
+import me.minebuilders.portal.tasks.PortalCreationLegacy;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -89,7 +90,21 @@ public class CreateCmd extends BaseCmd {
                     Bound b = new Bound(player.getWorld().getName(), l.getBlockX(), l.getBlockY(), l.getBlockZ(), l2.getBlockX(), l2.getBlockY(), l2.getBlockZ());
                     try {
                         plugin.portals.add((Portal) type.getPortal().newInstance(new Object[]{s, b, Status.NOT_READY}));
-                        new PortalCreation(b).run();
+
+                        // Change implemented by _JuL1En_ for reducing lagg
+                        // Old Code:
+                        // new PortalCreation(b).run();
+
+                        // New Code:
+
+                        try {
+                            Class.forName("org.bukkit.block.data.BlockData");
+                            new PortalCreation(b).run();
+                        } catch (ClassNotFoundException e) {
+                            new PortalCreationLegacy(b).run();
+                        }
+
+                    // The following code section was pre-existing in the class and has been incorporated as is, without any modifications by _JuL1En_:
                     } catch (Exception e) {
                         Util.msg((CommandSender) player, "&cFailed to add portal to local list!");
                         return true;
