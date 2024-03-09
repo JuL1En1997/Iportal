@@ -9,6 +9,7 @@ import me.minebuilders.portal.portals.Portal;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
@@ -80,7 +81,10 @@ public class PortalListener implements Listener {
                     if (portal.getStatus() == Status.RUNNING) {
                         Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin)this.plugin, new Runnable() {
                             public void run() {
-                                portal.Teleport(p);
+
+                                // Added by _JuL1En_ to enable functionality
+                                // for playing a specific sound when teleporting through the portal.
+                                IP.data.playSound(p, portal);
                             }
                         },  5L);
 
