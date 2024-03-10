@@ -50,8 +50,7 @@ public class LanguageManager {
 
         // List of language files to be created.
         List<String> files = Arrays.asList("messages.properties", "messages_de.properties", "messages_en.properties",
-                "messages_es.properties", "messages_fr.properties", "messages_it.properties", "messages_nl.properties",
-                "messages_pl.properties");
+                "messages_es.properties", "messages_fr.properties", "messages_it.properties", "messages_nl.properties");
 
         // Loops through the list of language files.
         for (String fileName : files) {
