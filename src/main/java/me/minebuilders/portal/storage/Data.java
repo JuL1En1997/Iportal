@@ -49,7 +49,7 @@ public class Data {
             this.config = (FileConfiguration)YamlConfiguration.loadConfiguration(this.file);
             save();
 
-            // Change implemented by _JuL1En_ for improved
+            // Change implemented by _JuL1En_ for improved for color support
             // Old Code:
             // Util.log("New portals.yml file successfully created!");
 
@@ -111,15 +111,20 @@ public class Data {
 
                         Util.warning("Unable to load portal " + s + "!");
                     }
-                    Util.log(String.valueOf(s) + " portal successfully Loaded!");
+                    // Change implemented by _JuL1En_ for improved color support
+                    // Old Code: Util.log(String.valueOf(s) + " portal successfully Loaded!");
+                    //
+
+                    // New Code:
+                    Bukkit.getConsoleSender().sendMessage("[Iportal] §d" + s + " §fportal §asuccessfully loaded!");
                 }
 
-                // Change implemented by _JuL1En_ for improved
+                // Change implemented by _JuL1En_ for improved color support
                 // Old Code: Util.log("New portals.yml file successfully created!");
                 //
 
                 // New Code:
-                Bukkit.getConsoleSender().sendMessage("[Iportal] §6portals.yml §ffile §asuccessfully Loaded! ");
+                Bukkit.getConsoleSender().sendMessage("[Iportal] §6portals.yml §ffile §asuccessfully loaded! ");
             }
         }
     }
