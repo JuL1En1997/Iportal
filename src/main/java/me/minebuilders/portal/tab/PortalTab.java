@@ -121,7 +121,8 @@ public class PortalTab implements TabCompleter {
 
             // Check if the first argument is one of the portal management commands that involve interacting with a specific portal.
             if (args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("toggle") ||
-                    args[0].equalsIgnoreCase("setto") || args[0].equalsIgnoreCase("tp")) {
+                    args[0].equalsIgnoreCase("setto") || args[0].equalsIgnoreCase("tp") ||
+                    args[0].equalsIgnoreCase("refresh")) {
 
                 // If the player has permission to delete portals, gather all portal names for the suggestion list.
                 if (p.hasPermission("iportal.delete")) {
@@ -141,6 +142,11 @@ public class PortalTab implements TabCompleter {
                 }
 
                 if (p.hasPermission("iportal.tp")) {
+                    List<String> portalNames = plugin.getData().getPortalNamesByType(null);
+                    args2.addAll(portalNames);
+                }
+
+                if (p.hasPermission("iportal.refresh")) {
                     List<String> portalNames = plugin.getData().getPortalNamesByType(null);
                     args2.addAll(portalNames);
                 }
