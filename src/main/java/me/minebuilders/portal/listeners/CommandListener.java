@@ -2,6 +2,8 @@ package me.minebuilders.portal.listeners;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.minebuilders.portal.IP;
 import me.minebuilders.portal.Util;
 import me.minebuilders.portal.commands.BaseCmd;
 import me.minebuilders.portal.commands.CreateCmd;
@@ -35,7 +37,12 @@ public class CommandListener implements CommandExecutor {
 
         if (args.length == 0 || getCmdInstance(args[0]) == null) {
 
-            s.sendMessage(ChatColor.DARK_GRAY + "-------------(" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Your IPortal Commands" + ChatColor.DARK_GRAY + ")-------------");
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // s.sendMessage(ChatColor.DARK_GRAY + "-------------(" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Your IPortal Commands" + ChatColor.DARK_GRAY + ")-------------");
+
+            // New Code:
+            s.sendMessage(IP.languageManager.getFormattedMessage("helplineheader"));
 
             for (BaseCmd cmd : cmds) {
 
@@ -43,8 +50,12 @@ public class CommandListener implements CommandExecutor {
                     s.sendMessage(ChatColor.DARK_PURPLE + "  - " + cmd.sendHelpLine());
             }
 
-            s.sendMessage(ChatColor.DARK_GRAY + "---------------------------------------------------");
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // s.sendMessage(ChatColor.DARK_GRAY + "---------------------------------------------------");
 
+            // New Code:
+              s.sendMessage(IP.languageManager.getFormattedMessage("helplinefooter"));
         } else {
             getCmdInstance(args[0]).processCmd(s, args);
         }

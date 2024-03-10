@@ -24,18 +24,38 @@ public class ToggleCmd extends BaseCmd {
             if (p.getName().equalsIgnoreCase(name)) {
 
                 if (p.getStatus() == Status.RUNNING) {
-                    Util.msg(sender, "&a" + name + " is now &cLOCKED&a!");
+
+                    // Change implemented by _JuL1En_ for improved language support
+                    // Old Code:
+                    // Util.msg(sender, "&a" + name + " is now &cLOCKED&a!");
+
+                    // New Code:
+                    Util.msg(sender, IP.languageManager.getFormattedMessage("toggleportal", name));
+
                     p.setStatus(Status.NOT_READY);
 
                 } else {
-                    Util.msg(sender, "&a" + name + " is now &2UNLOCKED&a!");
+
+                    // Change implemented by _JuL1En_ for improved language support
+                    // Old Code:
+                    // Util.msg(sender, "&a" + name + " is now &2UNLOCKED&a!");
+
+                    // New Code:
+                    Util.msg(sender, IP.languageManager.getFormattedMessage("untoggleportal", name));
+
                     p.setStatus(Status.RUNNING);
                 }
                 return true;
             }
         }
 
-        Util.msg(sender, "&c" + name + " is not a valid portal!");
+        // Change implemented by _JuL1En_ for improved language support
+        // Old Code:
+        // Util.msg(sender, "&c" + name + " is not a valid portal!");
+
+        // New Code:
+        Util.msg(sender, IP.languageManager.getFormattedMessage("invaildportal", name));
+
         return true;
     }
 }

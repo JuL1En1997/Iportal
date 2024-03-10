@@ -21,12 +21,26 @@ public class RefreshCmd extends BaseCmd {
         for (Portal p : plugin.portals) {
             if (p.getName().equalsIgnoreCase(name)) {
                 p.refresh();
-                Util.msg((CommandSender) player, "&a" + name + "'s has been refreshed!");
+
+                // Change implemented by _JuL1En_ for improved language support
+                // Old Code:
+                // Util.msg((CommandSender) player, "&a" + name + "'s has been refreshed!");
+
+                // New Code:
+                Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("refreshportal", name));
+
                 p.setStatus(Status.RUNNING);
                 return true;
             }
         }
-        Util.msg((CommandSender) player, "&c" + name + " is not a valid portal!");
+
+        // Change implemented by _JuL1En_ for improved language support
+        // Old Code:
+        // Util.msg((CommandSender) player, "&c" + name + " is not a valid portal!");
+
+        // New Code:
+        Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("invaildportal", name));
+
         return true;
     }
 }

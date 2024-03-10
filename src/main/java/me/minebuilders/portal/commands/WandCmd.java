@@ -20,13 +20,26 @@ public class WandCmd extends BaseCmd {
 
         if (plugin.playerses.containsKey(player.getUniqueId())) {
             plugin.playerses.remove(player.getUniqueId());
-            Util.msg((CommandSender)player, "Wand disabled!");
+
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // Util.msg((CommandSender)player, "Wand disabled!");
+
+            // New Code:
+            Util.msg((CommandSender)player, IP.languageManager.getFormattedMessage("wanddisabled"));
 
         } else {
 
             player.getInventory().addItem(new ItemStack[] { Util.getWand() });
             plugin.playerses.put(player.getUniqueId(), new PlayerSession(null, null));
-            Util.msg((CommandSender)player, "Wand enabled!");
+
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // Util.msg((CommandSender)player, "Wand enabled!");
+
+            // New Code:
+            Util.msg((CommandSender)player, IP.languageManager.getFormattedMessage("wandenabled"));
+
         }
 
         return true;

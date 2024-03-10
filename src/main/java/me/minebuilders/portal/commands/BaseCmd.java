@@ -1,5 +1,6 @@
 package me.minebuilders.portal.commands;
 
+import me.minebuilders.portal.IP;
 import me.minebuilders.portal.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -29,9 +30,23 @@ public abstract class BaseCmd {
             player = (Player)s;
         }
         if (!Util.hp(sender, cmdName)) {
-            sender.sendMessage(ChatColor.RED + "You do not have permission to use: " + ChatColor.WHITE + "/iportal " + cmdName);
+
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // sender.sendMessage(ChatColor.RED + "You do not have permission to use: " + ChatColor.WHITE + "/iportal " + cmdName);
+
+            // New Code:
+            sender.sendMessage(IP.languageManager.getFormattedMessage("nopermission", cmdName));
+
         } else if (argLength > arg.length) {
-            s.sendMessage(ChatColor.RED + "Wrong usage: " + sendHelpLine());
+
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // s.sendMessage(ChatColor.RED + "Wrong usage: " + sendHelpLine());
+
+            // New Code:
+            s.sendMessage(IP.languageManager.getFormattedMessage("wrongusage", sendHelpLine()));
+
         } else {
             return run();
         }

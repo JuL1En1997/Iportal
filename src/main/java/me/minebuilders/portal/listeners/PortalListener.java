@@ -9,7 +9,6 @@ import me.minebuilders.portal.portals.Portal;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
@@ -91,7 +90,14 @@ public class PortalListener implements Listener {
                         },  5L);
 
                     } else {
-                        Util.msg((CommandSender)p, "&cSorry, this portal is currently " + portal.getStatus().getName() + "&c!");
+
+                        // Change implemented by _JuL1En_ for improved language support
+                        // Old Code:
+                        // Util.msg((CommandSender)p, "&cSorry, this portal is currently " + portal.getStatus().getName() + "&c!");
+
+                        // New Code:
+                        Util.msg((CommandSender)p, IP.languageManager.getFormattedMessage("portalstatus", portal.getStatus().getName()));
+
                     }
                     delay(p.getName());
                 }

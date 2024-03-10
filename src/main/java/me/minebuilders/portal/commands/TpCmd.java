@@ -26,13 +26,25 @@ public class TpCmd extends BaseCmd {
                     p.Teleport(player);
 
                 } else {
-                    Util.msg(sender, "&c" + name + " is not running!!");
+
+                    // Change implemented by _JuL1En_ for improved language support
+                    // Old Code:
+                    // Util.msg(sender, "&c" + name + " is not running!!");
+
+                    // New Code:
+                    Util.msg(sender, IP.languageManager.getFormattedMessage("tpportalnotrunning", name));
+
                 }
                 return true;
             }
         }
 
-        Util.msg(sender, "&c" + name + " is not a valid portal!");
+        // Change implemented by _JuL1En_ for improved language support
+        // Old Code:
+        // Util.msg(sender, "&c" + name + " is not a valid portal!");
+
+        // New Code:
+        Util.msg(sender, IP.languageManager.getFormattedMessage("invaildportal", name));
 
         return true;
     }

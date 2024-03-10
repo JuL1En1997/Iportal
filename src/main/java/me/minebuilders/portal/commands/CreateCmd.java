@@ -9,7 +9,6 @@ import me.minebuilders.portal.portals.Portal;
 import me.minebuilders.portal.portals.PortalType;
 import me.minebuilders.portal.tasks.PortalCreation;
 import me.minebuilders.portal.tasks.PortalCreationLegacy;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
@@ -40,11 +39,25 @@ public class CreateCmd extends BaseCmd {
     public boolean run() {
         IP plugin = IP.instance;
         if (!plugin.playerses.containsKey(player.getUniqueId())) {
-            Util.msg((CommandSender) player, ChatColor.RED + "You need to make a selection before making a portal!");
+
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // Util.msg((CommandSender) player, ChatColor.RED + "You need to make a selection before making a portal!");
+
+            // New Code:
+            Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("noselection"));
+
         } else {
             PlayerSession st = (PlayerSession) plugin.playerses.get(player.getUniqueId());
             if (!st.hasValidSelection()) {
-                Util.msg((CommandSender) player, ChatColor.RED + "You need to make a selection before making a portal!");
+
+                // Change implemented by _JuL1En_ for improved language support
+                // Old Code:
+                // Util.msg((CommandSender) player, ChatColor.RED + "You need to make a selection before making a portal!");
+
+                // New Code:
+                Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("noselection"));
+
             } else {
                 PortalType type = IP.data.getType(args[2]);
                 Location l = st.getLoc1();
@@ -106,10 +119,24 @@ public class CreateCmd extends BaseCmd {
 
                     // The following code section was pre-existing in the class and has been incorporated as is, without any modifications by _JuL1En_:
                     } catch (Exception e) {
-                        Util.msg((CommandSender) player, "&cFailed to add portal to local list!");
+
+                        // Change implemented by _JuL1En_ for improved language support
+                        // Old Code:
+                        // Util.msg((CommandSender) player, "&cFailed to add portal to local list!");
+
+                        // New Code:
+                        Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("failedcreateportal"));
+
                         return true;
                     }
-                    Util.msg((CommandSender) player, "You created portal " + s + "!");
+
+                    // Change implemented by _JuL1En_ for improved language support
+                    // Old Code:
+                    // Util.msg((CommandSender) player, "You created portal " + s + "!");
+
+                    // New Code:
+                    Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("createportal", s));
+
                 }
 
                 // End of code section modified or developed by _JuL1En_

@@ -5,7 +5,6 @@ import me.minebuilders.portal.Status;
 import me.minebuilders.portal.Util;
 import me.minebuilders.portal.portals.Portal;
 import me.minebuilders.portal.portals.PortalType;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public class SetToCmd extends BaseCmd {
@@ -45,20 +44,40 @@ public class SetToCmd extends BaseCmd {
                         data = args[2];
 
                 } else {
-                    player.sendMessage(ChatColor.RED + "Wrong arguments for this portal type!");
+
+                    // Change implemented by _JuL1En_ for improved language support
+                    // Old Code:
+                    // player.sendMessage(ChatColor.RED + "Wrong arguments for this portal type!");
+
+                    // New Code:
+                    player.sendMessage(IP.languageManager.getFormattedMessage("wrongarguments"));
+
                     return false;
                 }
 
                 p.setTarget(data);
                 IP.data.getConfig().set("portals." + name + ".tpto", data);
                 IP.data.save();
-                Util.msg((CommandSender)player, "&a" + name + "'s target has been set!");
+
+                // Change implemented by _JuL1En_ for improved language support
+                // Old Code:
+                // Util.msg((CommandSender)player, "&a" + name + "'s target has been set!");
+
+                // New Code:
+                Util.msg((CommandSender)player, IP.languageManager.getFormattedMessage("setportal", name));
+
                 p.setStatus(Status.RUNNING);
                 return true;
             }
         }
 
-        Util.msg((CommandSender)player, "&c" + name + " is not a valid portal!");
+        // Change implemented by _JuL1En_ for improved language support
+        // Old Code:
+        // Util.msg((CommandSender)player, "&c" + name + " is not a valid portal!");
+
+        // New Code:
+        Util.msg((CommandSender)player, IP.languageManager.getFormattedMessage("invaildportal", name));
+
         return true;
     }
 }

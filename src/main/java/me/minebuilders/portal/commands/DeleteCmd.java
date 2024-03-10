@@ -23,7 +23,13 @@ public class DeleteCmd extends BaseCmd {
         for (Portal p : plugin.portals) {
             if (p.getName().equalsIgnoreCase(name)) {
                 por = p;
-                Util.msg((CommandSender) player, "&aAttempting to remove " + name + "!");
+
+                // Change implemented by _JuL1En_ for improved language support
+                // Old Code:
+                // Util.msg((CommandSender) player, "&aAttempting to remove " + name + "!");
+
+                // New Code:
+                  Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("trydeleteportal", name));
 
                 // Change implemented by _JuL1En_ for improved compatibility across Minecraft versions
                 // Old Code:
@@ -40,11 +46,24 @@ public class DeleteCmd extends BaseCmd {
 
                 IP.data.getConfig().set("portals." + name, null);
                 IP.data.save();
-                Util.msg((CommandSender) player, "&a" + name + " has been deleted!");
+
+                // Change implemented by _JuL1En_ for improved language support
+                // Old Code:
+                // Util.msg((CommandSender) player, "&a" + name + " has been deleted!");
+
+                // New Code:
+                Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("deleteportal", name));
             }
         }
         if (por == null) {
-            Util.msg((CommandSender) player, "&c" + name + " is not a valid portal!");
+
+            // Change implemented by _JuL1En_ for improved language support
+            // Old Code:
+            // Util.msg((CommandSender) player, "&c" + name + " is not a valid portal!");
+
+            // New Code:
+            Util.msg((CommandSender) player, IP.languageManager.getFormattedMessage("invaildportal", name));
+
         } else {
             plugin.portals.remove(por);
         }

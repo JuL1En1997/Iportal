@@ -52,7 +52,14 @@ public class WandListener implements Listener {
                 ses.setLoc2(l);
                 Util.msg((CommandSender)p, "Pos2: " + l.getX() + ", " + l.getY() + ", " + l.getZ());
                 if (!ses.hasValidSelection())
-                    Util.msg((CommandSender)p, "Now you need to set position 1!");
+
+                    // Change implemented by _JuL1En_ for improved language support
+                    // Old Code:
+                    // Util.msg((CommandSender)p, "Now you need to set position 1!");
+
+                    // New Code:
+                    Util.msg((CommandSender)p, IP.languageManager.getFormattedMessage("pos2info"));
+
                 event.setCancelled(true);
                 cd.add(p.getUniqueId());
                 cooldown(p.getUniqueId());
@@ -73,7 +80,14 @@ public class WandListener implements Listener {
             ses.setLoc1(l);
             Util.msg((CommandSender)p, "Pos1: " + l.getX() + ", " + l.getY() + ", " + l.getZ());
             if (!ses.hasValidSelection())
-                Util.msg((CommandSender)p, "Now you need to set position 2!");
+
+                // Change implemented by _JuL1En_ for improved language support
+                // Old Code:
+                // Util.msg((CommandSender)p, "Now you need to set position 2!");
+
+                // New Code:
+                Util.msg((CommandSender)p, IP.languageManager.getFormattedMessage("pos1info"));
+
             event.setCancelled(true);
         }
     }
