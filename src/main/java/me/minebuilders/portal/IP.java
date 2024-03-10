@@ -55,6 +55,7 @@ public final class IP extends JavaPlugin {
         languageManager = new LanguageManager(this);
 
         Bukkit.getMessenger().registerOutgoingPluginChannel((Plugin)this, "BungeeCord");
+        getCommand("iportal").setExecutor((CommandExecutor)new CommandListener());
 
         // Added by _JuL1En_
         // Assigns a TabCompleter to the "iportal" command, enabling automatic completion of command arguments,
