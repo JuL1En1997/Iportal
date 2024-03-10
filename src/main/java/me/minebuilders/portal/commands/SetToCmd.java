@@ -13,7 +13,13 @@ public class SetToCmd extends BaseCmd {
         this.forcePlayer = true;
         this.cmdName = "setto";
         this.argLength = 2;
-        this.usage = "<name> <extra>";
+
+        // Change implemented by _JuL1En_ for improved functionality
+        // Old Code:
+        // this.usage = "<name> <targetservername, radius>";
+
+        // New Code:
+        this.usage = "<portalname> <targetservername, radius>";
     }
 
     public boolean run() {

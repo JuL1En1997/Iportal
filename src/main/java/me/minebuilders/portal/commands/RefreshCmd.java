@@ -12,6 +12,13 @@ public class RefreshCmd extends BaseCmd {
         this.forcePlayer = true;
         this.cmdName = "refresh";
         this.argLength = 2;
+
+        // Change implemented by _JuL1En_ for improved functionality
+        // Old Code:
+        // this.usage = "<name>";
+
+        // New Code:
+        this.usage = "<portalname>";
     }
 
     public boolean run() {

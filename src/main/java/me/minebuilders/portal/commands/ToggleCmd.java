@@ -10,7 +10,14 @@ public class ToggleCmd extends BaseCmd {
     public ToggleCmd() {
         this.forcePlayer = false;
         this.cmdName = "toggle";
-        this.usage = "<name>";
+
+        // Change implemented by _JuL1En_ for improved functionality
+        // Old Code:
+        // this.usage = "<name>";
+
+        // New Code:
+        this.usage = "<portalname>";
+
         this.argLength = 2;
     }
 

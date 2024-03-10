@@ -13,7 +13,13 @@ public class DeleteCmd extends BaseCmd {
         this.forcePlayer = true;
         this.cmdName = "delete";
         this.argLength = 2;
-        this.usage = "<name>";
+
+        // Change implemented by _JuL1En_ for improved functionality
+        // Old Code:
+        // this.usage = "<name>";
+
+        // New Code:
+        this.usage = "<portalname>";
     }
 
     public boolean run() {

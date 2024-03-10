@@ -10,7 +10,14 @@ public class TpCmd extends BaseCmd {
     public TpCmd() {
         this.forcePlayer = true;
         this.cmdName = "tp";
-        this.usage = "<name>";
+
+        // Change implemented by _JuL1En_ for improved functionality
+        // Old Code:
+        // this.usage = "<name>";
+
+        // New Code:
+        this.usage = "<portalname>";
+
         this.argLength = 2;
     }
     public boolean run() {
