@@ -18,11 +18,21 @@ public class Util {
     }
 
     public static void log(final String s) {
-        Util.log.info("[iPortal] " + s);
+        // Change implemented by _JuL1En_ for improved
+        // Old Code:
+        // Util.log.info("[iPortal] " + s);
+
+        // New Code:
+        Util.log.info("[IPortal] " + s);
     }
 
     public static void warning(final String s) {
-        Util.log.warning("[iPortal] " + s);
+        // Change implemented by _JuL1En_ for improved
+        // Old Code:
+        // Util.log.warning("[iPortal] " + s);
+
+        // New Code:
+        Util.log.warning("[IPortal] " + s);
     }
 
     public static boolean hp(final CommandSender sender, final String s) {
