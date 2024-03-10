@@ -73,4 +73,4 @@ For issues, errors, or bugs, feel free to create an [issue](https://github.com/J
 
 ## License
 
-The Iportal-Updated plugin is released under the [GPL-3.0](LICENSE). See the `LICENSE` file in the repository for full license information.
+The Iportal-Updated plugin is released under the [GPL-3.0](https://github.com/JuL1En1997/Iportal?tab=GPL-3.0-1-ov-file). See the `LICENSE` file in the repository for full license information.
