@@ -71,21 +71,36 @@ public class PortalListener implements Listener {
             Vector l = getNearLoc(Util.getPortalMaterial(), p.getLocation()).toVector();
 
             for (Portal portal : this.plugin.portals) {
-
                 if (portal.isInRegion(l) &&
                         !delays.contains(p.getName()) &&
                         !whitelist.contains(p.getName())) {
 
 
-                    if (portal.getStatus() == Status.RUNNING) {
+                        if (portal.getStatus() == Status.RUNNING) {
                         Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin)this.plugin, new Runnable() {
                             public void run() {
 
-                                portal.Teleport(p);
+                                if("none".equalsIgnoreCase(IP.data.getConfig().getString("portals." + portal.getName() + ".permission"))) {
+                                    portal.Teleport(p);
 
-                                // Added by _JuL1En_ to enable functionality
-                                // for playing a specific sound when teleporting through the portal.
-                                IP.data.playSound(p, portal);
+                                    // Added by _JuL1En_ to enable functionality
+                                    // for playing a specific sound when teleporting through the portal.
+                                    IP.data.playSound(p, portal);
+
+                                } else if(p.hasPermission("iportal.use." + portal.getName())) {
+                                    portal.Teleport(p);
+
+                                    // Added by _JuL1En_ to enable functionality
+                                    // for playing a specific sound when teleporting through the portal.
+                                    IP.data.playSound(p, portal);
+
+                                } else {
+                                    Vector direction = p.getLocation().getDirection().multiply(-1).setY(0.5);
+                                    p.setVelocity(direction);
+
+                                    Util.msg((CommandSender)p, IP.languageManager.getFormattedMessage("nopermission"));
+                                }
+                                
                             }
                         },  5L);
 
