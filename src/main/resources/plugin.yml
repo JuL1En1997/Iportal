@@ -1,6 +1,6 @@
 name: Iportal
 authors: [Spoopy, bob7l, _JuL1En_]
-version: '${project.version}'
+version: '2.0'
 main: me.minebuilders.portal.IP
 api-version: '1.13'
 softdepend: [Multiverse-Core, MultiWorld]
