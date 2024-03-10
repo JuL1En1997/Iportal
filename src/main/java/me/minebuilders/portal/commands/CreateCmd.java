@@ -33,7 +33,7 @@ public class CreateCmd extends BaseCmd {
         // this.usage = "<name> <portal-type>";
 
         // New Code:
-        this.usage = "<name> <portal-type> <sound-type>";
+        this.usage = "<portalname> <portal-type> <sound-type>";
     }
 
     public boolean run() {
@@ -91,10 +91,17 @@ public class CreateCmd extends BaseCmd {
                         fileConfiguration.set("portals." + s + ".sound", "NONE");
                     }
 
+                    // Add implemented by _JuL1En_ for improved functionality
+                    // Sets the permission for the newly created portal to "none".
+                    // This indicates that, by default, no special permissions are required to use the portal.
+                    fileConfiguration.set("portals." + s + ".permission", "none");
+
+
                 } catch (NullPointerException e1) {
                     // If a NullPointerException occurs (e.g., if getSound returns null and
                     // valueOf is called on it), the sound in the configuration is set to "NONE".
                     fileConfiguration.set("portals." + s + ".sound", "NONE");
+                    fileConfiguration.set("portals." + s + ".permission", "none");
 
                 } finally {
 
