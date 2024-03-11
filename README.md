@@ -37,6 +37,10 @@ The "Iportal-Updated" plugin supports mulit languages through `.properties` file
 3. **Replace the Default**: Open the `messages.properties` file and replace its contents with what you've copied from the chosen language file.
 4. **Restart the Server**: Save the changes and restart your Minecraft server to apply the language change.
 
+### Permission and Setting for Portals with Permission
+- Default permission: none: Portal can be used by all players.
+- Permission: iportal.use.portalname: Portal can only be used by players with this permission.
+
 ## Commands & Permissions
 
 - `/iportal wand`: Toggles the portal creation wand.
@@ -55,6 +59,10 @@ The "Iportal-Updated" plugin supports mulit languages through `.properties` file
   - Permission: `iportal.list`
 - `/iportal tp <portalame>`: Teleports the player to the coordinates set for the specified portal.
   - Permission: `iportal.tp`
+ 
+## Permission and Setting for Portals with Permission
+- Default permission: none: Portal can be used by all players.
+- Permission: iportal.use.portalname: Portal can only be used by players with this permission.
 
 ## Support
 
